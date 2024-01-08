@@ -34,7 +34,7 @@ public class Main {
         arrayList2.add(c);
         int z = 1;
         do {
-            System.out.println("1 : Select Address Book\n2: Display all the address book");
+            System.out.println("1 : Select Address Book\n2: Display all the address book\n3: Search person by city");
             int option = sc.nextInt();
             switch (option)
             {
@@ -76,6 +76,17 @@ public class Main {
                         System.out.println(ks.name + " : " + ks.hm);
                     }
                     break;
+                case 3:
+                    System.out.println("Enter the city you want to display");
+                    String city = sc.next();
+                    for (AddressBook x1 : arrayList2){
+                        for (Contact p : x1.hm.values()){
+                            if(city.equalsIgnoreCase(p.getCity()))
+                            {
+                                System.out.println(x1.name + " : " +p);
+                            }
+                        }
+                    }
             }
         } while (z != 0);
 
