@@ -41,6 +41,8 @@ public class AddressBookMain {
             // Create a new contact and add it to the address book
             Contact contact1 = new Contact(firstName, lastName, address, city, state, zipCode, phoneNumber, email);
             a.hm.put(firstName, contact1);
+            a.hm.put(city, contact1);
+            a.hm.put(state, contact1);
         } else {
             System.out.println("Same user found");
         }
