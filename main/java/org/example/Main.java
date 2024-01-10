@@ -1,6 +1,7 @@
 package org.example;
 
 import java.util.ArrayList;
+import java.util.Map;
 import java.util.Scanner;
 
 /**
@@ -34,7 +35,7 @@ public class Main {
         arrayList2.add(c);
         int z = 1;
         do {
-            System.out.println("1 : Select Address Book\n2: Display all the address book\n3: Search person by city");
+            System.out.println("1 : Select Address Book\n2: Display all the address book\n3: Search person by citysBooks City\\n4: Display all the AddressBooks State\\n5: City Count\\n6: ");
             int option = sc.nextInt();
             switch (option)
             {
@@ -73,20 +74,56 @@ public class Main {
                     break;
                 case 2:
                     for (AddressBook ks : arrayList2) {
-                        System.out.println(ks.name + " : " + ks.hm);
+                        System.out.println(ks.name + " : " + ks.contactMap);
                     }
                     break;
                 case 3:
                     System.out.println("Enter the city you want to display");
                     String city = sc.next();
                     for (AddressBook x1 : arrayList2){
-                        for (Contact p : x1.hm.values()){
+                        for (Contact p : x1.contactMap.values()){
                             if(city.equalsIgnoreCase(p.getCity()))
                             {
                                 System.out.println(x1.name + " : " +p);
                             }
                         }
                     }
+                    break;
+                case 4:
+                    System.out.println("Enter the state you want to display");
+                    String state = sc.next();
+                    arrayList2.stream()
+                            .flatMap(addressBook -> addressBook.stateMap.values().stream())
+                            .filter(person -> person.getState().equalsIgnoreCase(state))
+                            .forEach(System.out::println);
+                    break;
+                case 5:
+                    System.out.println("Enter city name to count: ");
+//                    c1.printContactCountByCity(aList);
+                    String cityCount=sc.next();int countCity=0;
+                    for (Map.Entry<String, Contact> entry : a.cityMap.entrySet()) {
+                        Contact p = entry.getValue();
+                        if (p.getCity().equalsIgnoreCase(cityCount))
+                            countCity++;
+                        else
+                            System.out.println("None");
+                    }
+                    System.out.println("COUNT:-  "+countCity);
+                    break;
+
+                case 6:
+                    System.out.println("Contact count by State:");
+//                    c1.printContactCountByState(aList);
+                    String stateCount=sc.next();int countstate=0;
+                    for (Map.Entry<String, Contact> entry : a.stateMap.entrySet()) {
+                        Contact p = entry.getValue();
+                        if (p.getState().equalsIgnoreCase(stateCount))
+                            countstate++;
+                        else
+                            System.out.println("None");
+                    }
+                    System.out.println("COUNT:-  "+countstate);
+                    break;
             }
         } while (z != 0);
 

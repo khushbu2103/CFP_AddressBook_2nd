@@ -22,7 +22,7 @@ public class AddressBookMain {
         String firstName = sc.next();
 
         // Check if a contact with the same first name already exists
-        if (a.hm.values().stream().noneMatch(contact -> contact.getFirstName().equalsIgnoreCase(firstName))) {
+        if (a.contactMap.values().stream().noneMatch(contact -> contact.getFirstName().equalsIgnoreCase(firstName))) {
             System.out.println("Enter last name");
             String lastName = sc.next();
             System.out.println("Enter address");
@@ -40,9 +40,9 @@ public class AddressBookMain {
 
             // Create a new contact and add it to the address book
             Contact contact1 = new Contact(firstName, lastName, address, city, state, zipCode, phoneNumber, email);
-            a.hm.put(firstName, contact1);
-            a.hm.put(city, contact1);
-            a.hm.put(state, contact1);
+            a.contactMap.put(firstName, contact1);
+            a.contactMap.put(city, contact1);
+            a.contactMap.put(state, contact1);
         } else {
             System.out.println("Same user found");
         }
@@ -53,7 +53,7 @@ public class AddressBookMain {
      * @param a The AddressBook object to display contacts from.
      */
     public void Display(AddressBook a) {
-        for (Map.Entry<String, Contact> entry : a.hm.entrySet()) {
+        for (Map.Entry<String, Contact> entry : a.contactMap.entrySet()) {
             System.out.println(entry.getKey() + ": " + entry.getValue());
         }
     }
@@ -64,7 +64,7 @@ public class AddressBookMain {
      * @param a The AddressBook object where the contact will be edited.
      */
     public void EditContact(AddressBook a) {
-        for (Map.Entry<String, Contact> entry : a.hm.entrySet()) {
+        for (Map.Entry<String, Contact> entry : a.contactMap.entrySet()) {
             Scanner sc = new Scanner(System.in);
             System.out.println("Enter first name you want to edit");
             String firstNameToEdit = sc.next();
@@ -114,7 +114,7 @@ public class AddressBookMain {
      * @param a The AddressBook object where the contact will be deleted.
      */
     public void DeleteContacts(AddressBook a) {
-        for (Map.Entry<String, Contact> entry : a.hm.entrySet()) {
+        for (Map.Entry<String, Contact> entry : a.contactMap.entrySet()) {
             Scanner sc = new Scanner(System.in);
             System.out.println("Enter first name you want to delete");
             String firstNameToDelete = sc.next();
@@ -123,7 +123,7 @@ public class AddressBookMain {
             // Check if the contact with the specified first name exists
             if (contact.getFirstName() != null && contact.getFirstName().equals(firstNameToDelete)) {
                 // Remove the contact from the address book
-                a.hm.remove(firstNameToDelete);
+                a.contactMap.remove(firstNameToDelete);
                 System.out.println("Delete operation is successfully done");
                 break;
             }

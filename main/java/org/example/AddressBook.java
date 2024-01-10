@@ -10,9 +10,9 @@ public class AddressBook {
     String name;
 
     // HashMap to store contacts, where the key is the contact's first name
-    HashMap<String, Contact> hm = new HashMap<>();
-    HashMap<String, Contact> city = new HashMap<>();
-    HashMap<String , Contact> state = new HashMap<>();
+    HashMap<String, Contact> contactMap = new HashMap<>();
+    HashMap<String, Contact> cityMap = new HashMap<>();
+    HashMap<String , Contact> stateMap = new HashMap<>();
 
     /**
      * Constructs an AddressBook with a specified name.
