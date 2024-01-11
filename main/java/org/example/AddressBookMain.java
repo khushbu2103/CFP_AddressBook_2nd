@@ -149,6 +149,20 @@ public class AddressBookMain {
         List<Contact> sortedContacts = a.sortContactsByPerson();
         displaySortedContacts(sortedContacts);
     }
+    public void displayContactsSortedByCity(AddressBook a) {
+        List<Contact> sortedContacts = a.sortContactsByCity();
+        displaySortedContacts(sortedContacts);
+    }
+
+    void displayContactsSortedByState(AddressBook a) {
+        List<Contact> sortedContacts = a.sortContactsByState();
+        displaySortedContacts(sortedContacts);
+    }
+
+    void displayContactsSortedByZip(AddressBook a) {
+        List<Contact> sortedContacts = a.sortContactsByZip();
+        displaySortedContacts(sortedContacts);
+    }
     private void displaySortedContacts(List<Contact> sortedContacts) {
         for (Contact contact : sortedContacts) {
             System.out.println(contact);

@@ -127,6 +127,15 @@ public class Main {
                 case 7:
                     c1.displayContactsSortedByPerson(a);
                     break;
+                case 8:
+                    c1.displayContactsSortedByCity(a);
+                    break;
+                case 9:
+                    c1.displayContactsSortedByState(a);
+                    break;
+                case 10:
+                    c1.displayContactsSortedByZip(a);
+                    break;
             }
         } while (z != 0);
 

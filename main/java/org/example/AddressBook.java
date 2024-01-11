@@ -30,4 +30,19 @@ public class AddressBook {
                 .sorted(Comparator.comparing(Contact::getFirstName))
                 .collect(Collectors.toList());
     }
+    List<Contact> sortContactsByCity() {
+        return contactMap.values().stream()
+                .sorted(Comparator.comparing(Contact::getFirstName))
+                .collect(Collectors.toList());
+    }
+    List<Contact> sortContactsByState() {
+        return contactMap.values().stream()
+                .sorted(Comparator.comparing(Contact::getFirstName))
+                .collect(Collectors.toList());
+    }
+    List<Contact> sortContactsByZip() {
+        return contactMap.values().stream()
+                .sorted(Comparator.comparing(Contact::getFirstName))
+                .collect(Collectors.toList());
+    }
 }
