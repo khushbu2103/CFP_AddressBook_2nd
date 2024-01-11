@@ -22,7 +22,7 @@ public class Main {
 
         // Scanner for user input
         Scanner sc = new Scanner(System.in);
-
+        AddressBookMain c1 = new AddressBookMain();
         // ArrayList to store multiple address books
         ArrayList<AddressBook> arrayList2 = new ArrayList<>();
 
@@ -35,7 +35,7 @@ public class Main {
         arrayList2.add(c);
         int z = 1;
         do {
-            System.out.println("1 : Select Address Book\n2: Display all the address book\n3: Search person by citysBooks City\\n4: Display all the AddressBooks State\\n5: City Count\\n6: ");
+            System.out.println("1 : Select Address Book\n2: Display all the address book\n3: Search person by citysBooks City\n4: Display all the AddressBooks State\n5: City Count\n6:state count\n7: Sort by person name");
             int option = sc.nextInt();
             switch (option)
             {
@@ -99,7 +99,7 @@ public class Main {
                     break;
                 case 5:
                     System.out.println("Enter city name to count: ");
-//                    c1.printContactCountByCity(aList);
+                    c1.printContactCountByCity(arrayList2);
                     String cityCount=sc.next();int countCity=0;
                     for (Map.Entry<String, Contact> entry : a.cityMap.entrySet()) {
                         Contact p = entry.getValue();
@@ -113,7 +113,7 @@ public class Main {
 
                 case 6:
                     System.out.println("Contact count by State:");
-//                    c1.printContactCountByState(aList);
+                    c1.printContactCountByState(arrayList2);
                     String stateCount=sc.next();int countstate=0;
                     for (Map.Entry<String, Contact> entry : a.stateMap.entrySet()) {
                         Contact p = entry.getValue();
@@ -123,6 +123,9 @@ public class Main {
                             System.out.println("None");
                     }
                     System.out.println("COUNT:-  "+countstate);
+                    break;
+                case 7:
+                    c1.displayContactsSortedByPerson(a);
                     break;
             }
         } while (z != 0);

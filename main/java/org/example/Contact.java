@@ -1,9 +1,15 @@
 package org.example;
 
-/**
- * The Contact class represents a contact with various personal details.
+/*
+ * This class represents a Person and includes private variables for first name, last name, phone number,
+ * zip code, city, relation, and a Relationship enum. It provides a constructor, getter and setter methods,
+ * and overrides the toString() method for meaningful representation.
  */
-public class Contact {
+public class Contact implements Comparable<Contact>{
+    public int compareTo(Contact otherPerson) {
+        return this.firstName.compareToIgnoreCase(otherPerson.firstName);
+    }
+
     // Private fields to store contact information
     private String firstName;
     private String lastName;

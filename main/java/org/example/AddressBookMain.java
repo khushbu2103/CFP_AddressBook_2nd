@@ -3,6 +3,7 @@ import java.util.Map;
 import java.util.Scanner;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 /**
  * The AddressBookMain class contains methods to manage contacts in an address book.
@@ -129,5 +130,31 @@ public class AddressBookMain {
             }
         }
     }
+    public void printContactCountByCity(ArrayList<AddressBook> aList) {
+        System.out.println("Contact count by City:");
+        aList.stream()
+                .flatMap(addressBook -> addressBook.cityMap.values().stream())
+                .collect(Collectors.groupingBy(Contact::getCity, Collectors.counting()))
+                .forEach((city, count) -> System.out.println(city + ": " + count));
+    }
+
+    public void printContactCountByState(ArrayList<AddressBook> aList) {
+        System.out.println("Contact count by State:");
+        aList.stream()
+                .flatMap(addressBook -> addressBook.stateMap.values().stream())
+                .collect(Collectors.groupingBy(Contact::getState, Collectors.counting()))
+                .forEach((state, count) -> System.out.println(state + ": " + count));
+    }
+    public void displayContactsSortedByPerson(AddressBook a) {
+        List<Contact> sortedContacts = a.sortContactsByPerson();
+        displaySortedContacts(sortedContacts);
+    }
+    private void displaySortedContacts(List<Contact> sortedContacts) {
+        for (Contact contact : sortedContacts) {
+            System.out.println(contact);
+        }
+    }
+
+
 }
 

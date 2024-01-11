@@ -1,6 +1,9 @@
 package org.example;
 
+import java.util.Comparator;
 import java.util.HashMap;
+import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * The AddressBook class represents a collection of contacts and is used for organizing and managing contact information.
@@ -21,5 +24,10 @@ public class AddressBook {
      */
     public AddressBook(String name) {
         this.name = name;
+    }
+    List<Contact> sortContactsByPerson() {
+        return contactMap.values().stream()
+                .sorted(Comparator.comparing(Contact::getFirstName))
+                .collect(Collectors.toList());
     }
 }
